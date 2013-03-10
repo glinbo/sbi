@@ -102,7 +102,7 @@ int setup_code_file()
 	return 0;
 }
 
-int setup_code_stdio()
+int setup_code_stdin()
 {
 	int c;
 	int size = 30000;
@@ -410,7 +410,7 @@ int parse_options(int argc, char** argv)
 int main(int argc, char** argv)
 {
 	parse_options(argc, argv);
-	if (file ? setup_code_file():setup_code_stdio())
+	if (file ? setup_code_file():setup_code_stdin())
 		return -1;
 	if (setup_buffer()) {
 		free(code);
