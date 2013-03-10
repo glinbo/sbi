@@ -1,0 +1,32 @@
+SBI stands for simple brainfuck interpreter
+
+RUNNING & OPTIONS:
+ - I/O OPTIONS:
+     -f <file>: file to parse (default: <stdin>)
+     -s <char>: program/stdin separator (used when interpreting from stdin) (default: '!')
+     -o: flush stdout after every char outputed
+ - CELL OPTIONS:
+     -l <num>: lower cell bound (default: 0)
+     -u <num>: upper cell bound (default: 255)
+     -c wrap|clamp|quit: cell under/overflow behaviour (default: wrap)
+ - BUFFER OPTIONS:
+     -k <size>: buffer size (default: 30000)
+     -b wrap|clamp|quit: buffer under/overflow behaviour (default: wrap)
+ - EOF OPTIONS:
+     -e <num>|none|quit: eof behaviour (default: -1)
+ - MISC OPTIONS:
+     -h: help
+
+DEFAULT SETTINGS:
+ - program is read from stdin
+ - program and stdin are separated by "!"
+ - flushing stdout is disabled
+ - buffer size = 30000 cells
+ - cell values are in [0, 255] range
+ - buffer and cells wrap when under/overflow occurs
+ - eof returns -1 (which is 255 after normalization to [0, 255] range)
+
+In other words running:
+	./sbi
+is equivalent to running:
+	./sbi -f - -s '!' -k 30000 -b wrap -l 0 -u 255 -c wrap -e -1
