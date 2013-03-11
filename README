@@ -1,6 +1,9 @@
 SBI stands for simple brainfuck interpreter
 
-RUNNING & OPTIONS:
+1. COMPILING:
+$ cd sbi && make
+
+2. RUNNING & OPTIONS:
  - I/O OPTIONS:
      -f <file>: file to parse (default: <stdin>)
      -s <char>: program/stdin separator (used when interpreting from stdin) (default: '!')
@@ -17,7 +20,7 @@ RUNNING & OPTIONS:
  - MISC OPTIONS:
      -h: help
 
-DEFAULT SETTINGS:
+3. DEFAULT SETTINGS:
  - program is read from stdin
  - program and stdin are separated by "!"
  - flushing stdout is disabled
@@ -31,16 +34,16 @@ In other words running:
 is equivalent to running:
 	$ ./sbi -f - -s '!' -k 30000 -b wrap -l 0 -u 255 -c wrap -e -1
 
-EXAMPLES:
+5. EXAMPLES:
 To execute "filename.bf" just type:
 	$ ./sbi -f filename.bf
 you can also read program directly from stdin:
 	$ ./sbi < filename.bf
-When reading from stdin interpreter assumes that program code and input is separated by '!', so:
+When reading from stdin, interpreter assumes that program code and input are separated by '!', so:
 	$ echo "input" | ./sbi -f filename.bf
 can be written as:
 	$ (cat filename.bf; echo "!input") | ./sbi
 You can change separator to whatever you want using '-s' option (as long as it is not one of "<>+-.,[]"):
 	$ ./sbi -s '@'
-For more options just run:
+For more options look at beginning of this file or run:
 	$ ./sbi -h
