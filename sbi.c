@@ -137,7 +137,8 @@ int setup_buffer()
 		perror("ERROR - malloc");
 		return -1;
 	}
-	memset(buffer, b_length * sizeof(*buffer), 0);
+	for (i = 0; i < b_length; ++i)
+		buffer[i] = cell_min;
 	return 0;
 }
 
